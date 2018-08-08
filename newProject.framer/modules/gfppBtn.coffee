@@ -28,8 +28,8 @@ class exports.gfppBtn extends Layer
                     position:"relative"
                     justifyContent:"center"
                     alignItems:"center"
-                    minHeight:"32px"
-                    minWidth:"32px"
+                    height:"32px"
+                    width:"32px"
                     marginRight:"10px"
   
 

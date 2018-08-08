@@ -1,5 +1,5 @@
 class exports.leftMenu extends Layer
-
+    Events.Selected = "Selected"
     constructor: (@options={}) ->
 		 								
             @options.icons ?= ["home","background","add","appMarket","media","blog","data"]
@@ -16,6 +16,13 @@ class exports.leftMenu extends Layer
                     parent:mc
                     y:i*60
                     icon:menuBtn
+                    name:menuBtn
+                btn.onClick ->
+                    this.parent.btnDispatch(this)
+
+    btnDispatch: (value) ->
+        @emit(Events.Selected,value)
+
 
             
 
