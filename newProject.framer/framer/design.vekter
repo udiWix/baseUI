@@ -163,9 +163,7 @@
                 "top" : null,
                 "visible" : true,
                 "width" : 812,
-                "widthFactor" : null,
-                "x" : 0,
-                "y" : 0
+                "widthFactor" : null
               }
             ],
             "clip" : false,

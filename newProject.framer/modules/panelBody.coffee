@@ -89,3 +89,4 @@ class exports.panelBody extends Layer
                 width:25
                 height:25
                 html:helpIcon
+                title:@options.title

@@ -2,7 +2,7 @@ class exports.leftMenu extends Layer
     Events.Selected = "Selected"
     constructor: (@options={}) ->
 		 								
-            @options.icons ?= ["home","background","add","appMarket","media","blog","data"]
+            @options.icons ?= ["pages","background","add","appMarket","media","blog","data"]
             super @options
             
             {leftMenuBtn}= require "leftMenuBtn"
@@ -22,6 +22,8 @@ class exports.leftMenu extends Layer
 
     btnDispatch: (value) ->
         @emit(Events.Selected,value)
+    
+
 
 
             

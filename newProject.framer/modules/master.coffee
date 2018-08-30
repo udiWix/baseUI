@@ -33,3 +33,6 @@ exports.leftMenu = leftMenu
 
 {btnPanel}= require "btnPanel"
 exports.btnPanel = btnPanel
+
+{panelHeader}= require "panelHeader"
+exports.panelHeader = panelHeader
