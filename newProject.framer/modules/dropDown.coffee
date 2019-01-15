@@ -8,7 +8,7 @@ class exports.dropDown extends Layer
 	constructor: (@options={}) ->
 		@options.items ?=["One","Two","Three"]
 		@options.cLabel ?="Label"
-		@options.placeholder ?="Not connected"
+		@options.placeHolder ?="Not connected"
 		@options.icons ?=false
 		super @options
 		styles= require "wixStyles"
@@ -61,7 +61,7 @@ class exports.dropDown extends Layer
 			parent:select
 			name:"selectText"
 			style:styles.t03
-			html:@options.placeholder
+			html:@options.placeHolder
 		
 		selectText.style=
 				width:"auto"

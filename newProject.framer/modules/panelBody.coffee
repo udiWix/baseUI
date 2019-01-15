@@ -4,7 +4,7 @@ class exports.panelBody extends Layer
 		 								
             @options.height ?=558
             @options.width ?=288
-            @options.title ?="Panel Title"
+            @options.title ?="Properties"
             @options.headerColor ?="blue"
             super @options
 

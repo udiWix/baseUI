@@ -2,33 +2,36 @@
 exports.addGFPP = (mc,label="Change Text",btns=["settings","design","help","data"]) ->
 	frame = mc.frame
 	Events.focused = "focused"
+	
+
+	
 	container = new Layer
-		parent:mc
+		parent:mc.parent
 		name:"container"
+		x:mc.x
+		y:mc.y
+
 
 	{gfppBtn} = require "gfppBtn"
+	
+	
 
 	mc.draggable.enabled  = true
+	
+	mc.on Events.Move, () ->
+		container.x=mc.x
+		container.y=mc.y
 
-	border = new Layer
-		name:"lightBorder"
-		parent:container
-		width:frame.width+2
-		height:frame.height+2
-		borderWidth:1
-		borderColor:"#D3EDFF"
-		visible:false
-		x:-1
-		y:-1
+
 
 	blueBorder = new Layer
 		name:"border"
 		parent:container
 		width:frame.width+2
 		height:frame.height+2
-		borderWidth:1
-		borderColor:"#D3EDFF"
-		visible:false
+		borderWidth:2
+		borderColor:"#00ABF6"
+		visible:true
 		x:-1
 		y:-1
 	
@@ -41,7 +44,7 @@ exports.addGFPP = (mc,label="Change Text",btns=["settings","design","help","data
 			borderWidth:1
 			parent:container
 			borderRadius:100
-			visible:false
+			visible:true
 			name:"circle"
 
 		switch i
@@ -78,7 +81,7 @@ exports.addGFPP = (mc,label="Change Text",btns=["settings","design","help","data
 		style:
 			display:"flex"
 			position:"relative"	
-			visibility:"hidden"
+			
 
 
 	
@@ -86,45 +89,9 @@ exports.addGFPP = (mc,label="Change Text",btns=["settings","design","help","data
 		bt = new gfppBtn
 			parent:gfppContainer
 			icon:btn
+	@setFocus(mc)
 	
 
-	
-	mc.onMouseOver ->
-		container = this.childrenWithName("container")[0]
-		border = container.childrenWithName("lightBorder")[0]
-		border.visible = true
-
-	mc.onMouseOut ->
-		container = this.childrenWithName("container")[0]
-		border = container.childrenWithName("lightBorder")[0]
-		border.visible = false
-
-
-	mc.onClick (e)->
-		this.emit(Events.focused, this)
-		this.bringToFront()
-
-exports.Focus = (mc) ->
-		container = mc.childrenWithName("container")[0]
-		border = container.childrenWithName("border")[0]
-		border.borderColor = "#00ABF6"
-		border.visible=true
-		circles = container.childrenWithName("circle")
-		gfppContainer = container.childrenWithName("gfppContainer")[0]
-		gfppContainer.style["visibility"] = "visible"
-		for circle in circles
-			circle.visible =true
-		
-
-exports.unFocus = (mc) ->
-		if mc
-			container = mc.childrenWithName("container")[0]
-			border = container.childrenWithName("border")[0]
-			circles = container.childrenWithName("circle")
-			gfppContainer = container.childrenWithName("gfppContainer")[0]
-			gfppContainer.style["visibility"] = "hidden"
-			border.borderColor="#D3EDFF"
-			border.visible=false
-			for circle in circles
-				circle.visible =false		
+exports.setFocus= (value) ->
+		emit(Events.focused, value, @)
 			

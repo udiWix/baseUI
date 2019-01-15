@@ -9,34 +9,44 @@ class exports.datasetIcon extends Layer
             icons= require "icons"
             mc = this
             @.props=
+                width:100
+                height:85
+                
+
+
+            bg = new Layer
+                parent:this
                 backgroundColor:"white"
                 shadowBlur: 14
-                shadowColor: "rgba(22,45,61,0.36)"
+                shadowColor: "rgba(22,45,61,0.45)"
                 borderRadius:8
                 width:50
                 height:50
+                y:10
+                clip:true
+            bg.centerX()
+            icon = new SVGLayer
+                parent:bg
+                svg:icons.dataset
+                w:50
+                h:50
+                y:1
 
             
-            icon = new SVGLayer
-                parent:mc
-                svg:icons.dataset
-                width:30
-                height:26
-            
             label = new TextLayer
-                parent:icon
+                parent:this
                 text:@options.setName
-                y:45
+                y:65
                 fontSize:12
                 fontWeight: 700
-                shadowColor:"rgba(0,0,0,0.7)"
-                shadowBlur:3
+                shadowColor:"rgba(0,0,0,0.9)"
+                shadowBlur:2
                 color:"white"
             label.centerX()
 
 
 
-            icon.center()
+            # icon.center()
             
             
             @.onMouseDown ->

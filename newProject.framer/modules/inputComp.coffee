@@ -3,14 +3,16 @@ class exports.inputComp extends Layer
 	# Events.valueChange  = "input.OnChange"
 	Events.ValueChange = "ValueChange"
 	
-	constructor: (@options={}) ->
+	constructor: (@options={curentValue}) ->
 		@options.cLabel ?="Label"
 		@options.placeholder ?="Not connected"
 		@options.placeHolderColor ?="red"
+		@options.currentValue ?=""
+		
 		super @options
 		styles= require "wixStyles"
 		colors= require "wixColors"
-		currentValue = undefined
+		currentValue = @options.currentValue
 		isFocused = false
 
 		this.backgroundColor="transparent"
@@ -53,6 +55,7 @@ class exports.inputComp extends Layer
 			fontSize:"18px"
 			"-webkit-appearance": "none"
 			outline: "none"
+			color:"#162D3D"
 
 		
 		@picker =new Layer
@@ -82,7 +85,14 @@ class exports.inputComp extends Layer
 			isFocused = false
 		@input.onkeydown = (e) ->
 			currentValue = @value
+
 		
 		@input.onkeyup = (e) =>
-			if currentValue isnt @value
+
+			if @options.currentValue isnt @value
 				@emit(Events.ValueChange, @value)
+	
+	setInput: (string) ->
+		@input.value= string
+		@name = string
+

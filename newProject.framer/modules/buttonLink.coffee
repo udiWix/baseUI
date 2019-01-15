@@ -12,7 +12,6 @@ class exports.buttonLink extends Layer
             styles= require "wixStyles"
             colors= require "wixColors"
             icons= require "icons"
-            panel = @.parent
             mc = this
 
             btnType = {main:{hover:colors.b2, idle:colors.b1},secondary:{hover:colors.b4, idle:colors.b5}}
@@ -20,22 +19,24 @@ class exports.buttonLink extends Layer
 
             @.props=
                 backgroundColor:"rgba(255, 255, 255, 0.8)"
-                height:108
-                width:@options.width
-                y:panel.height - 107
                 style:
+                    position:"relative"
+                    alignself: "flex-end"
+                    width:"100%"
+                    height:"auto"
                     paddingTop:"24px"
+                    paddingBottom:"24px"
                     textAlign:"center"
-                    margin:"auto"
+                    marginTop:"auto"
 
-            panel.on "change:height", ->
-                mc.y=panel.height - 107
+
+
             
             btn = new Layer
                 parent:@
                 html:@options.btnLabel
                 style:styles.t01
-                name:"btn"
+                
             
             btn.style=
                 position:"relative"

@@ -1,5 +1,5 @@
 class exports.topbar extends Layer
-    Events.dragEnd = "dragEnd"
+   
     constructor: (@options={}) ->
 		 								
             @options.height ?=48
@@ -9,6 +9,7 @@ class exports.topbar extends Layer
             styles= require "wixStyles"
             colors= require "wixColors"
             @.height = 48
+            @.name="topbar"
             @.backgroundColor = "white"
             @.style = 
                 position:"relative"
